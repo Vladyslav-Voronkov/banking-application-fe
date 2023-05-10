@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- 
+      Written by Vladyslav Voronkov
+      instagram: @ovladaetttt
+      2023, all rights reserved
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body class="overflow-x-hidden bg-[#111] text-white">
+    <!-- loader -->
+    <div
+      id="loader"
+      class="fixed w-full h-screen flex justify-center items-center backdrop-blur-xl z-50"
+    >
+      <!-- <div class="loader"></div> -->
+      <div class="content ml-14">
+        <div class="player_one"></div>
+        <div class="player_two"></div>
+        <div class="ball"></div>
+      </div>
+
+      <h1 class="text-xl font-bold">Loading your wallet<h1>
+    </div>
+
+    <!-- Header -->
+    <header class="flex justify-between items-center p-5">
+      <h1 class="font-bold text-2xl">Wallet Wise</h1>
+      <!-- allert svg icon-->
+      <div class="flex items-center">
+        <img
+          width="30"
+          class="alert-icon"
+          src="img/icons/Alert.svg"
+          alt="Alert"
+          id="alert"
+        />
+      </div>
+    </header>
+
+    <!-- notifications modal window -->
+    <div
+      id="notifications"
+      class="fixed top-0 left-0 p-5 w-full h-screen bg-[#222222cc] flex justify-center items-center z-50 backdrop-blur-sm"
+    >
+      <!-- notification -->
+      <div class="">
+        <!-- notification text -->
+        <div class="bg-black p-5 rounded-xl">
+          <div class="flex justify-between items-center">
+            <h1 class="font-bold text-lg">Notifications</h1>
+            <!-- close button  -->
+            <button
+              class="cursor-pointer bg-[#3862F8] text-white px-5 py-2 rounded-xl"
+              id="close_notifications"
+            >
+              Close
+            </button>
+          </div>
+          <p class="text-gray-500 mt-3">
+            Nothing here yet. When you have a new notification, it will appear.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- In developing modal window -->
+    <div class="indev" id="indev">
+      <p>This feature is under development.</p> 
+      <span id="indev__progress" class="indev__progress"></span>
+    </div>
+
+    <!-- Cards -->
+    <div class="flex w-full shrink">
+      <!-- Card -->
+      <div
+        class="bg-[#3862F8] text-white p-5 w-5/6 rounded-xl ml-2 mt-5 shrink-0 card"
+        id="first_card"
+      >
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="img/icons/Mastercard-Logo.svg" alt="Mastercard-Logo" />
+            <span class="ml-2">**** 2236</span>
+          </div>
+          <span>02/24</span>
+        </div>
+
+        <div class="mt-10">
+          <span>Balance</span>
+          <h1 class="font-bold text-2xl mt-1">2,500 PLN</h1>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div
+        class="bg-[#3862F8] text-white p-5 w-5/6 ml-2 rounded-xl m-auto mt-5 shrink-0 card"
+        id="second_card"
+      >
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="img/icons/Mastercard-Logo.svg" alt="Mastercard-Logo" />
+            <span class="ml-2">**** 5522</span>
+          </div>
+          <span>02/24</span>
+        </div>
+
+        <div class="mt-10">
+          <span>Balance</span>
+          <h1 class="font-bold text-2xl mt-1">2,500 PLN</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- operations -->
+    <div class="mt-5 flex justify-between items-center px-5">
+      <!-- top up -->
+      <div
+        onclick="startindevv()"
+        id="startindev"
+        class="flex flex-col justify-center items-center mt-5"
+      >
+        <img
+          class="bg-black p-4 rounded-full drop-shadow-xl operation"
+          src="img/icons/topup.svg"
+          alt="top-up"
+        />
+        <span class="mt-3">Top up</span>
+      </div>
+
+      <!-- pay -->
+      <div
+        onclick="startindevv()"
+        id="startindev"
+        class="flex flex-col justify-center items-center mt-5"
+      >
+        <img
+          class="bg-black p-4 rounded-full drop-shadow-xl operation"
+          \
+          src="img/icons/pay.svg"
+          alt="pay"
+        />
+        <span class="mt-3">Pay</span>
+      </div>
+
+      <!-- send -->
+      <div
+        onclick="startindevv()"
+        id="startindev"
+        class="flex flex-col justify-center items-center mt-5"
+      >
+        <img
+          class="bg-black p-4 rounded-full drop-shadow-xl operation"
+          src="img/icons/send.svg"
+          alt="send"
+        />
+        <span class="mt-3">Send</span>
+      </div>
+
+      <!-- more -->
+      <div
+        onclick="startindevv()"
+        id="startindev"
+        class="flex flex-col justify-center items-center mt-5"
+      >
+        <img
+          class="bg-black p-4 rounded-full drop-shadow-xl operation"
+          src="img/icons/more.svg"
+          alt="more"
+        />
+        <span class="mt-3">More</span>
+      </div>
+    </div>
+
+    <!-- Recent transactions -->
+    <div
+      id="recent"
+      class="mt-10 py-4 recent h-screen drop-shadow-2xl fixed w-full bg-black"
+    >
+      <div
+        id="recent_pull"
+        class="bg-[#ffffff88] w-20 h-1 m-auto rounded-full cursor-row-resize"
+      ></div>
+
+      <div class="p-5 flex justify-between items-center">
+        <h1 class="text-lg font-bold">Recent transactions</h1>
+        <img src="img/icons/Search.svg" alt="Search" />
+      </div>
+
+      <!-- Netflix transaction -->
+      <div class="px-5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <img src="img/icons/netflix_logo.png" alt="netflix_logo" />
+            <div class="ml-3">
+              <h1 class="text-lg font-bold">Netflix</h1>
+              <span class="text-gray-500">Entertainment</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-red-600 font-bold">-25 PLN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Netflix transaction -->
+      <div class="px-5 mt-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <img src="img/icons/netflix_logo.png" alt="netflix_logo" />
+            <div class="ml-3">
+              <h1 class="text-lg font-bold">Netflix</h1>
+              <span class="text-gray-500">Entertainment</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-red-600 font-bold">-25 PLN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Netflix transaction -->
+      <div class="px-5 mt-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <img src="img/icons/netflix_logo.png" alt="netflix_logo" />
+            <div class="ml-3">
+              <h1 class="text-lg font-bold">Netflix</h1>
+              <span class="text-gray-500">Entertainment</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-red-600 font-bold">-25 PLN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Netflix transaction -->
+      <div class="px-5 mt-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <img src="img/icons/netflix_logo.png" alt="netflix_logo" />
+            <div class="ml-3">
+              <h1 class="text-lg font-bold">Netflix</h1>
+              <span class="text-gray-500">Entertainment</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-red-600 font-bold">-25 PLN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Netflix transaction -->
+      <div class="px-5 mt-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <img src="img/icons/netflix_logo.png" alt="netflix_logo" />
+            <div class="ml-3">
+              <h1 class="text-lg font-bold">Netflix</h1>
+              <span class="text-gray-500">Entertainment</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-red-600 font-bold">-25 PLN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Netflix transaction -->
+      <div class="px-5 mt-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <img src="img/icons/netflix_logo.png" alt="netflix_logo" />
+            <div class="ml-3">
+              <h1 class="text-lg font-bold">Netflix</h1>
+              <span class="text-gray-500">Entertainment</span>
+            </div>
+          </div>
+
+          <div>
+            <span class="text-red-600 font-bold">-25 PLN</span>
+          </div>
+        </div>
+      </div>
+
+          <div>
+            <span class="text-green-600 font-bold">+200 PLN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="fixed bottom-0 left-0 w-full p-5 footer flex items-center justify-between bg-black"
+    >
+      <!-- accounts -->
+      <div class="flex flex-col items-center" onclick="startindevv()">
+        <img src="img/icons/accounts.svg" alt="accounts" />
+        <span class="text-[#3862F8]">Accounts</span>
+      </div>
+      <!-- Statistics -->
+      <div class="flex flex-col items-center" onclick="startindevv()">
+        <img src="img/icons/statistics.svg" alt="statistics" />
+        <span class="text-gray-500">Statistics</span>
+      </div>
+      <!-- cashback -->
+      <div class="flex flex-col items-center" onclick="startindevv()">
+        <img src="img/icons/cashback.svg" alt="cashback" />
+        <span class="text-gray-500">Cashback</span>
+      </div>
+      <!-- settings -->
+      <div class="flex flex-col items-center" onclick="startindevv()">
+        <img src="img/icons/settings.svg" alt="settings" />
+        <span class="text-gray-500">Settings</span>
+      </div>
+    </footer>
+  </body>
+
+  <script src="app.js"></script>
+</html>
